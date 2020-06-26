@@ -1,7 +1,7 @@
 syntax = "proto3";
-option go_package = "./pb";
+option go_package = "./api";
 
-package pb;
+package api;
 
 // 目录
 message Person {
