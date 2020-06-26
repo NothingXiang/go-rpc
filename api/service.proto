@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package pb;
+option go_package = "./pb";
+
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+import "api/message.proto";
+
+message StringMessage{
+  string value = 1;
+
+  Person p = 3;
+
+  google.protobuf.Timestamp create = 2;
+}
+
+service MyService{
+  rpc Echo(StringMessage) returns (Person){
+    option(google.api.http) = {
+      post:"/v1/pb/echo"
+      body:"*"
+    };
+  }
+}
